@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resum Visual del Curs</title>
+    <style>
+        :root {
+            --primary-color: #1a237e;
+            --secondary-color: #283593;
+            --accent-color: #ffab00;
+            --light-color: #e8eaf6;
+            --dark-color: #0d47a1;
+            --text-color: #212121;
+            --text-light: #757575;
+            --shadow-color: rgba(26, 35, 126, 0.15);
+            --gold-gradient: linear-gradient(135deg, #ffd700 0%, #ffab00 100%);
+        }
+    
+        /* Fuentes premium */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap');
+    
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.8;
+            color: var(--text-color);
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+            background-image: linear-gradient(to bottom, #ffffff 0%, #f8f9fa 100px);
+        }
+    
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+    
+        /* Header de lujo */
+        header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--dark-color) 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+            margin-bottom: 3rem;
+            box-shadow: 0 10px 30px var(--shadow-color);
+            position: relative;
+            overflow: hidden;
+            border-bottom: 4px solid transparent;
+            border-image: var(--gold-gradient);
+            border-image-slice: 1;
+        }
+    
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gold-gradient);
+        }
+    
+        h1 {
+            margin: 0;
+            font-size: 3.5rem;
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 1px;
+            position: relative;
+            display: inline-block;
+        }
+    
+        h1::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: var(--accent-color);
+        }
+    
+        .subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-top: 1rem;
+            font-weight: 300;
+        }
+    
+        /* Títulos con estilo premium */
+        h2 {
+            color: var(--primary-color);
+            border-bottom: 2px solid transparent;
+            border-image: var(--gold-gradient);
+            border-image-slice: 1;
+            padding-bottom: 0.5rem;
+            margin-top: 4rem;
+            font-size: 2.2rem;
+            font-family: 'Playfair Display', serif;
+            position: relative;
+            padding-left: 20px;
+        }
+    
+        h2::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 60%;
+            width: 5px;
+            background: var(--gold-gradient);
+            border-radius: 3px;
+        }
+    
+        h3 {
+            color: var(--dark-color);
+            font-size: 1.6rem;
+            margin-top: 2.5rem;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding-left: 30px;
+        }
+    
+        h3::before {
+            content: "▸";
+            color: var(--accent-color);
+            margin-right: 10px;
+            font-size: 1.8rem;
+            position: absolute;
+            left: 0;
+        }
+    
+        /* Tarjetas premium */
+        .subject {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            padding: 2.5rem;
+            margin-bottom: 4rem;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+            overflow: hidden;
+        }
+    
+        .subject:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px var(--shadow-color);
+            border-color: rgba(255, 215, 0, 0.4);
+        }
+    
+        .subject::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.03) 0%, rgba(255, 255, 255, 0) 100%);
+            pointer-events: none;
+        }
+    
+        .topic {
+            margin-bottom: 3rem;
+        }
+    
+        .topic-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+    
+        /* Items con efecto "tarjeta de presentación" */
+        .topic-item {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(0, 0, 0, 0.03);
+        }
+    
+        .topic-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(26, 35, 126, 0.15);
+            border-color: rgba(255, 215, 0, 0.3);
+        }
+    
+        .topic-item::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--gold-gradient);
+        }
+    
+        .topic-item-content {
+            position: relative;
+            z-index: 1;
+        }
+    
+        .topic-item h4 {
+            color: var(--dark-color);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            position: relative;
+            padding-bottom: 8px;
+        }
+    
+        .topic-item h4::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--accent-color);
+        }
+    
+        /* Imágenes con marco sutil */
+        .img-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+    
+        .img-container img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+    
+        .img-container:hover img {
+            transform: scale(1.03);
+        }
+    
+        /* Highlight con fondo dorado sutil */
+        .highlight {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.08) 0%, rgba(255, 255, 255, 0.1) 100%);
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 2rem 0;
+            border-left: 4px solid var(--accent-color);
+            position: relative;
+        }
+    
+        .highlight::before {
+            content: "★";
+            position: absolute;
+            left: 20px;
+            top: 20px;
+            color: var(--accent-color);
+            font-size: 1.8rem;
+        }
+    
+        .highlight-content {
+            margin-left: 45px;
+        }
+    
+        .highlight h4 {
+            color: var(--dark-color);
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            font-family: 'Playfair Display', serif;
+        }
+    
+        /* Listas con iconos personalizados */
+        ul {
+            padding-left: 1.8rem;
+            list-style: none;
+        }
+    
+        li {
+            margin-bottom: 0.8rem;
+            position: relative;
+            padding-left: 1.8rem;
+        }
+    
+        li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 8px;
+            height: 8px;
+            background: var(--accent-color);
+            border-radius: 50%;
+        }
+    
+        /* Footer elegante */
+        footer {
+            text-align: center;
+            margin-top: 6rem;
+            padding: 3rem;
+            color: var(--text-light);
+            font-size: 0.95rem;
+            background: linear-gradient(135deg, var(--light-color) 0%, #ffffff 100%);
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+    
+        footer::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gold-gradient);
+        }
+    
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+    
+        .footer-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent 0%, rgba(255, 171, 0, 0.5) 50%, transparent 100%);
+            margin: 1.5rem auto;
+            width: 60%;
+        }
+    
+        /* Animaciones sutiles */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    
+        .subject {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+        }
+    
+        .subject:nth-child(1) { animation-delay: 0.1s; }
+        .subject:nth-child(2) { animation-delay: 0.2s; }
+        .subject:nth-child(3) { animation-delay: 0.3s; }
+        .subject:nth-child(4) { animation-delay: 0.4s; }
+        .subject:nth-child(5) { animation-delay: 0.5s; }
+    
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 1.8rem;
+            }
+            
+            .subject {
+                padding: 1.8rem;
+            }
+            
+            .topic-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>BLOC PROFESSIONAL</h1>
+            <p class="subtitle">Un recull de tots els coneixements adquirits</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <section class="subject">
+            <h2>Projecte</h2>
+            <div class="topic">
+                <h3>Continguts apresos</h3>
+                <p>En aquesta matèria hem abordat temes fonamentals per al desenvolupament tecnològic i la gestió de sistemes:</p>
+                
+                <div class="topic-list">
+                    <div class="topic-item">
+                        <div class="img-container">
+                            <img src="https://image.slidesharecdn.com/sistemesoperatius-121107123501-phpapp02/95/sistemes-operatius-5-638.jpg?cb=1352291737" alt="Sistemes Operatius">
+                        </div>
+                        <div class="topic-item-content">
+                            <h4>Sistemes Operatius Propis</h4>
+                            <p>Estudi dels components bàsics d'un sistema operatiu, gestió de recursos i funcionament intern.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="topic-item">
+                        <div class="img-container">
+                            <img src="https://www.softzone.es/app/uploads-softzone.es/2022/01/Bases-de-datos-SQL.jpg" alt="Bases de dades SQL">
+                        </div>
+                        <div class="topic-item-content">
+                            <h4>Bases de Dades SQL</h4>
+                            <p>Disseny i implementació de bases de dades relacionals, consultes complexes, normalització i optimització.</p>
+                            <ul>
+                                <li>Creació i gestió de taules</li>
+                                <li>Consultes SELECT avançades</li>
+                                <li>JOINs i subconsultes</li>
+                                <li>Transaccions i ACID</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="topic-item">
+                        <div class="img-container">
+                            <img src="https://www.devopsschool.com/blog/wp-content/uploads/2023/12/image-126.png" alt="MongoDB">
+                        </div>
+                        <div class="topic-item-content">
+                            <h4>MongoDB</h4>
+                            <p>Bases de dades NoSQL orientades a documents, amb la seva flexibilitat i alt rendiment.</p>
+                            <ul>
+                                <li>Col·leccions i documents</li>
+                                <li>Consultes amb JSON</li>
+                                <li>Aggregation framework</li>
+                                <li>Índexs i optimització</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="topic-item">
+                        <div class="img-container">
+                            <img src="https://s3.amazonaws.com/s3.timetoast.com/public/uploads/photo/12708140/image/3bb1a633ecdcf0885ebe226a658f32d2" alt="Llenguatges de marques">
+                        </div>
+                        <div class="topic-item-content">
+                            <h4>Llenguatges de Marques</h4>
+                            <p>Tecnologies per a l'estructuració i presentació de continguts digitals.</p>
+                            <ul>
+                                <li><strong>HTML i CSS</strong>: Estructura i estil de pàgines web</li>
+                                <li><strong>XML</strong>: Estandard per a intercanvi de dades</li>
+                                <li><strong>XSL i XSLT</strong>: Transformació de documents XML</li>
+                                <li><strong>XPath i XQuery</strong>: Consulta i manipulació de dades XML</li>
+                                <li><strong>XHTML</strong>: HTML reformulat com a XML</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="topic-item">
+                        <div class="img-container">
+                            <img src="http://5b0988e595225.cdn.sohucs.com/images/20180906/b6a2997e9d9e4c9b9f588e05e9cc0f08.jpeg" alt="Programació Orientada a Objectes">
+                        </div>
+                        <div class="topic-item-content">
+                            <h4>Programació Orientada a Objectes</h4>
+                            <p>Paradigma de programació basat en objectes, classes i la seva interacció.</p>
+                            <ul>
+                                <li>Encapsulament</li>
+                                <li>Herència</li>
+                                <li>Polimorfisme</li>
+                                <li>Abstracció</li>
+                                <li>Disseny de classes</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="subject">
+            <h2>Sistemes Operatius Open-Source</h2>
+            <div class="topic">
+                <h3>Linux i Administració de Sistemes</h3>
+                <p>Hem après a treballar amb sistemes Linux des de la línia de comandes, cobrint totes les àrees essencials per a l'administració de sistemes:</p>
+                
+                <div class="topic-list">
+                    <div class="topic-item">
+                        <div class="img-container">
+                            <img src="https://images.unsplash.com/photo-1544256718-3bcf237f3974?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Terminal Linux">
+                        </div>
+                        <div class="topic-item-content">
+                            <h4>Estructura d'arxius i comandes bàsiques (sm1act02)</h4>
+                            <ul>
+                                <li>Jerarquia del sistema de fitxers</li>
+                                <li>Comandes essencials: ls, cd, cp, mv, rm</li>
+                                <li>Visualització de continguts: cat, less, head, tail</li>
+                                <li>Busqueda: find, grep</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="topic-item">
+                        <div class="img-container">
+                            <img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Configuració de xarxa">
+                        </div>
+                        <div class="topic-item-content">
+                            <h4>Configuració de xarxa (sm1act03)</h4>
+                            <ul>
+                                <li>Configuració d'interfícies de xarxa</li>
+                                <li>Comandes: ifconfig, ip, netstat</li>
+                                <li>Resolució de noms DNS</li>
+                                <li>Test de connectivitat: ping, traceroute</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="topic-item">
+                        <div class="img-container">
+                            <img src="https://static1.howtogeekimages.com/wordpress/wp-content/uploads/2025/02/debian-grub-boot-menu.png" alt="Procés d'arrencada">
+                        </div>
+                        <div class="topic-item-content">
+                            <h4>Procés d'arrencada i GRUB (sm1act04)</h4>
+                            <ul>
+                                <li>Fases del boot: BIOS, MBR, kernel, init</li>
+                                <li>Configuració del GRUB</li>
+                                <li>Runlevels i systemd</li>
+                                <li>Resolució de problemes d'arrencada</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="topic-item">
+                        <div class="img-container">
+                            <img src="https://images.unsplash.com/photo-1597852074816-d933c7d2b988?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Particions">
+                        </div>
+                        <div class="topic-item-content">
+                            <h4>Particions i sistemes de fitxers (sm1act05)</h4>
+                            <ul>
+                                <li>Tipus de particions: primàries, esteses, lògiques</li>
+                                <li>Eines: fdisk, parted, gparted</li>
+                                <li>Formateig i muntatge</li>
+                                <li>Sistemes de fitxers: ext4, xfs, btrfs</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="topic-item">
+                        <div class="img-container">
+                            <img src="https://www.prored.es/wp-content/uploads/2018/11/prored-bits-de-permisos-unix-permission-bits.png" alt="Permisos">
+                        </div>
+                        <div class="topic-item-content">
+                            <h4>Permisos i propietat (sm1act06)</h4>
+                            <ul>
+                                <li>Permisos rwx per a usuari, grup i altres</li>
+                                <li>Comandes chmod, chown, chgrp</li>
+                                <li>Màscara umask</li>
+                                <li>Permisos especials: sticky bit, SUID, SGID</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="topic-item">
+                        <div class="img-container">
+                            <img src="https://www.profesionalreview.com/wp-content/uploads/2017/03/Gestionar-usuarios-y-grupos-en-Linux.png" alt="Usuaris i grups">
+                        </div>
+                        <div class="topic-item-content">
+                            <h4>Gestió d'usuaris i grups (sm1act08)</h4>
+                            <ul>
+                                <li>Creació i modificació d'usuaris</li>
+                                <li>Fitxers /etc/passwd, /etc/shadow, /etc/group</li>
+                                <li>Comandes useradd, usermod, groupadd</li>
+                                <li>Contrasenyes i polítiques de seguretat</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="topic-item">
+                        <div class="img-container">
+                            <img src="https://images.unsplash.com/photo-1517430816045-df4b7de11d1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Processos">
+                        </div>
+                        <div class="topic-item-content">
+                            <h4>Gestió de processos (sm1act09)</h4>
+                            <ul>
+                                <li>Comandes ps, top, htop</li>
+                                <li>Signals i kill</li>
+                                <li>Prioritats nice/renice</li>
+                                <li>Processos en segon pla</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="topic-item">
+                        <div class="img-container">
+                            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Serveis">
+                        </div>
+                        <div class="topic-item-content">
+                            <h4>Gestió de serveis (sm1act10)</h4>
+                            <ul>
+                                <li>Systemd i unitats de servei</li>
+                                <li>Comandes systemctl, journalctl</li>
+                                <li>Gestor de energia</li>
+                                <li>Hibernació i suspensió</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="topic-item">
+                        <div class="img-container">
+                            <img src="https://limuran.top/p/linux-%E5%AE%89%E8%A3%85-docker-%E6%95%99%E7%A8%8B/images/docker.webp" alt="Docker">
+                        </div>
+                        <div class="topic-item-content">
+                            <h4>Contenidors Docker (sm1act11)</h4>
+                            <ul>
+                                <li>Conceptes bàsics de Docker</li>
+                                <li>Imatges i contenidors</li>
+                                <li>Dockerfile</li>
+                                <li>Xarxes i volums</li>
+                                <li>Orquestració bàsica</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="topic-item">
+                        <div class="img-container">
+                            <img src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Scripts shell">
+                        </div>
+                        <div class="topic-item-content">
+                            <h4>Scripts shell i tasques programades (sm1act12)</h4>
+                            <ul>
+                                <li>Escriptura de scripts bash</li>
+                                <li>Variables i condicionals</li>
+                                <li>Bucles</li>
+                                <li>Cron i anacron</li>
+                                <li>Gestor de tasques at</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="topic-item">
+                        <div class="img-container">
+                            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Paquets de programari">
+                        </div>
+                        <div class="topic-item-content">
+                            <h4>Paquets de programari (sm1act13)</h4>
+                            <ul>
+                                <li>Paquets .deb i gestor apt</li>
+                                <li>Paquets tarball (.tar.gz)</li>
+                                <li>Compilació des de font</li>
+                                <li>Make i configure</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="topic">
+                <h3>Temes avançats</h3>
+                <p>Continguts més especialitzats en administració de sistemes:</p>
+                
+                <div class="topic-list">
+                    <div class="topic-item">
+                        <div class="img-container">
+                            <img src="https://images.unsplash.com/photo-1597852074816-d933c7d2b988?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="RAID">
+                        </div>
+                        <div class="topic-item-content">
+                            <h4>RAID (eh1act01)</h4>
+                            <ul>
+                                <li>Nivells de RAID: 0, 1, 5, 6, 10</li>
+                                <li>Configuració amb mdadm</li>
+                                <li>Monitoratge i manteniment</li>
+                                <li>Recuperació de fallades</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="topic-item">
+                        <div class="img-container">
+                            <img src="https://i.ytimg.com/vi/MeltFN-bXrQ/maxresdefault.jpg" alt="LVM">
+                        </div>
+                        <div class="topic-item-content">
+                            <h4>LVM (eh1act02)</h4>
+                            <ul>
+                                <li>Volums físics, grups de volums i volums lògics</li>
+                                <li>Creació i gestió amb pvcreate, vgcreate, lvcreate</li>
+                                <li>Redimensionament en calent</li>
+                                <li>Snapshots</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="topic-item">
+                        <div class="img-container">
+                            <img src="https://www.educba.com/academy/wp-content/uploads/2019/07/Samba-Server-in-Linux.jpg" alt="SAMBA">
+                        </div>
+                        <div class="topic-item-content">
+                            <h4>SAMBA (eh1act03)</h4>
+                            <ul>
+                                <li>Compartició de fitxers amb sistemes Windows</li>
+                                <li>Configuració de smb.conf</li>
+                                <li>Permisos i autenticació</li>
+                                <li>Accés des de clients</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="topic-item">
+                        <div class="img-container">
+                            <img src="https://images.unsplash.com/photo-1517430816045-df4b7de11d1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Quotes de disc">
+                        </div>
+                        <div class="topic-item-content">
+                            <h4>Quotes de disc (eh1act04)</h4>
+                            <ul>
+                                <li>Configuració de quotes</li>
+                                <li>Quotes per usuari i grup</li>
+                                <li>Eines repquota, quota</li>
+                                <li>Monitoratge d'ús</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="topic-item">
+                        <div class="img-container">
+                            <img src="https://www.milesweb.co.uk/blog/wp-content/uploads/2019/12/HardwareFirewall.gif" alt="Tallafocs">
+                        </div>
+                        <div class="topic-item-content">
+                            <h4>Tallafocs (eh1act05)</h4>
+                            <ul>
+                                <li>iptables/nftables</li>
+                                <li>Polítiques per defecte</li>
+                                <li>Regles d'entrada, sortida i forwarding</li>
+                                <li>NAT i port forwarding</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="subject">
+            <h2>Programació</h2>
+            <div class="topic">
+                <h3>Llenguatges i projectes</h3>
+                <p>Desenvolupament de coneixements en programació i sistemes embeguts:</p>
+                
+                <div class="topic-list">
+                    <div class="topic-item">
+                        <div class="img-container">
+                            <img src="https://logos-world.net/wp-content/uploads/2021/10/Python-Logo.png" alt="Python">
+                        </div>
+                        <div class="topic-item-content">
+                            <h4>Python</h4>
+                            <ul>
+                                <li>Sintaxi bàsica i estructures de control</li>
+                                <li>Funcions i mòduls</li>
+                                <li>Treball amb fitxers</li>
+                                <li>Llibreries estàndard</li>
+                                <li>Programació orientada a objectes</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="topic-item">
+                        <div class="img-container">
+                            <img src="https://techworm.net/programming/wp-content/uploads/2018/09/c-programming-1.png" alt="Llenguatge C">
+                        </div>
+                        <div class="topic-item-content">
+                            <h4>Llenguatge C</h4>
+                            <ul>
+                                <li>Compilació amb gcc</li>
+                                <li>Punter i gestió de memòria</li>
+                                <li>Estructures de dades</li>
+                                <li>Fitxers i entrada/sortida</li>
+                                <li>Makefiles</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="topic-item">
+                        <div class="img-container">
+                            <img src="file:///C:/Users/enric/Downloads/Robot_Tatami.gif" alt="Robot Sumo">
+                        </div>
+                        <div class="topic-item-content">
+                            <h4>Robot Sumo</h4>
+                            <ul>
+                                <li>Disseny i construcció</li>
+                                <li>Programació de comportament</li>
+                                <li>Sensors i actuadors</li>
+                                <li>Estratègies de competència</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="topic-item">
+                        <div class="img-container">
+                            <img src="file:///C:/Users/enric/Downloads/p1ex02.gif" alt="Arduino">
+                        </div>
+                        <div class="topic-item-content">
+                            <h4>Placa Arduino</h4>
+                            <ul>
+                                <li>Arquitectura i entorn de desenvolupament</li>
+                                <li>Programació de microcontroladors</li>
+                                <li>Lectura de sensors</li>
+                                <li>Control d'actuadors</li>
+                                <li>Comunicació sèrie</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="subject">
+            <h2>Digitalització</h2>
+            <div class="topic">
+                <h3>Transformació digital</h3>
+                <p>Estratègies per portar negocis a l'era digital i aprofitar les noves tecnologies:</p>
+                
+                <div class="topic-list">
+                    <div class="topic-item">
+                        <div class="img-container">
+                            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Digitalització">
+                        </div>
+                        <div class="topic-item-content">
+                            <h4>Digitalització de Negocis</h4>
+                            <ul>
+                                <li>Anàlisi de processos tradicionals</li>
+                                <li>Identificació d'oportunitats de digitalització</li>
+                                <li>Eines digitals per a negocis</li>
+                                <li>Casos d'èxit</li>
+                                <li>Mètrica del ROI digital</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="topic-item">
+                        <div class="img-container">
+                            <img src="https://www.fayerwayer.com/resizer/NF54Mewnd9qNA7Owd3YfLDyfUp8=/1600x0/filters:format(jpg):quality(70)/cloudfront-us-east-1.images.arcpublishing.com/metroworldnews/AFMOVVBDTZATHHAXSMOOHW3HGI.jpeg" alt="Intel·ligència Artificial">
+                        </div>
+                        <div class="topic-item-content">
+                            <h4>Intel·ligència Artificial aplicada</h4>
+                            <ul>
+                                <li>Conceptes bàsics d'IA i ML</li>
+                                <li>Eines d'IA accessibles</li>
+                                <li>Automatització de tasques</li>
+                                <li>Anàlisi predictiu</li>
+                                <li>Chatbots i atenció al client</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="subject">
+            <h2>IPO (Iniciativa a la Projecte Empresarial)</h2>
+            <div class="topic">
+                <h3>IPO 1 - Preparació per al món laboral</h3>
+                <p>Continguts teòrics i pràctics per a la inserció professional:</p>
+                <div class="img-container">
+                    <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Món laboral">
+                </div>
+                <ul>
+                    <li>Elaboració de CV i carta de presentació</li>
+                    <li>Tècniques d'entrevista</li>
+                    <li>Drets i deures laborals</li>
+                    <li>Contractes i nòmines</li>
+                    <li>Seguretat social i impostos</li>
+                    <li>Habilitats socials en l'entorn laboral</li>
+                </ul>
+            </div>
+            
+            <div class="topic">
+                <h3>IPO 2 - Emprendiment</h3>
+                <p>Desenvolupament del propi projecte empresarial:</p>
+                <div class="img-container">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Emprendiment">
+                </div>
+                <ul>
+                    <li>Identificació d'oportunitats de negoci</li>
+                    <li>Pla d'empresa</li>
+                    <li>Model de negoci</li>
+                    <li>Finançament i inversió</li>
+                    <li>Màrqueting digital</li>
+                    <li>Xarxes socials professionals</li>
+                </ul>
+                
+                <div class="highlight">
+                    <div class="highlight-content">
+                        <h4>El meu projecte: Consultoria de Ciberseguretat</h4>
+                        <p>Desenvolupament d'un pla de negoci per a una consultoria de ciberseguretat, amb serveis d'auditoria, formació i suport tècnic.</p>       
+                        <ul>
+                            <li>Serveis oferts</li>
+                            <li>Mercat objectiu</li>
+                            <li>Estrategia de màrqueting</li>
+                            <li>Projeccions financeres</li>
+                            <li>Riscos i oportunitats</li>  
+                        </ul>  
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>  
